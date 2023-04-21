@@ -158,6 +158,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
 
     private void showSkip(){
         mTvSkip.setVisibility(View.VISIBLE);
+        mWebView.setVisibility(View.GONE);
         initWebView();
         CountDownTimer countDownTimer = new CountDownTimer(3000, 1000) {
             @Override
@@ -370,7 +371,7 @@ public class MainActivity extends Activity implements PrivacyProtocolDialog.Resp
                     webUrl = urlBean.getWebViewUrl();
                 }
                 mLayoutError.setVisibility(View.GONE);
-                mWebView.setVisibility(View.VISIBLE);
+               // mWebView.setVisibility(View.VISIBLE);
                 mProgress.show();
                 mWebView.loadUrl(webUrl);
 

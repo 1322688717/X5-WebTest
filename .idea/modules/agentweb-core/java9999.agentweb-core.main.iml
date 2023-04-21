@@ -51,7 +51,7 @@
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:1.6.21" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib-common:1.6.21" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains:annotations:13.0" level="project" />
-    <orderEntry type="library" name="Gradle: D./zcq/project/AndroidStudy/wuyan/X5-WebTest/agentweb-core/libs/alipaySdk-15.6.8-20191021122514.aar" level="project" />
+    <orderEntry type="library" name="Gradle: D./zcq/project/X5-WebTest/agentweb-core/libs/alipaySdk-15.6.8-20191021122514.aar" level="project" />
     <orderEntry type="library" name="Gradle: com.download.library:Downloader:4.1.3@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.tencent.tbs.tbssdk:sdk:43697@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.material:material:1.7.0@aar" level="project" />
