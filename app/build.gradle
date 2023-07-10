@@ -16,18 +16,24 @@ android {
             abiFilters "armeabi", "armeabi-v7a", "arm64-v8a"
         }
 
-//        buildTypes {
-//            release {
-//                //开启混淆
-//                minifyEnabled true
-//                //移除无用资源
-//                shrinkResources true
-//                //压缩优化
-//                zipAlignEnabled true
-//                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules1.pro'
-////                signingConfig signingConfigs.release
-//            }
-//        }
+        archivesBaseName = "x5-WebTest"
+
+        buildTypes {
+            release {
+                //只需将false改为true即可启用混淆
+                minifyEnabled true
+
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+
+            debug {
+                //只需将false改为true即可启用混淆
+                minifyEnabled false
+
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            }
+
+        }
 
     }
 

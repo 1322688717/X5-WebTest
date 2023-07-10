@@ -20,106 +20,120 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+# 保留所有类和类成员的名称，不进行混淆
+-keepclassmembers class * {
+    *;
+}
 
-#-optimizationpasses 5
-#-dontusemixedcaseclassnames
-#-dontskipnonpubliclibraryclasses
-#-dontpreverify
-#-verbose
-#-optimizations !code/simplification/arithmetic,!field/*,!class/merging/*
-#
-## 系统类不需要混淆
-#-keepattributes *Annotation*
-#-keep class * extends java.lang.annotation.Annotation { *; }
-#-keepattributes Signature
-#-keep public class * extends android.app.Fragment
-#-keep public class * extends android.app.Activity
-#-keep public class * extends android.app.Application
-#-keep public class * extends android.app.Service
-#-keep public class * extends android.content.BroadcastReceiver
-#-keep public class * extends android.content.ContentProvider
-#-keep public class * extends android.app.backup.BackupAgentHelper
-#-keep public class * extends android.preference.Preference
-#-keep public class * extends android.support.v4.**
-#-keep public class * extends android.support.v7.**
-#-dontwarn com.alipay.android.phone.mrpc.core**
-#-keep class com.alipay.android.phone.mrpc.core.**{*;}
-#
-#-dontwarn com.alipay.apmobilesecuritysdk.face**
-#-keep class com.alipay.apmobilesecuritysdk.face.**{*;}
-#
-##  百度导航的不需要混淆
-##-dontwarn com.baidu.navisdk.comapi.tts.ttsplayer**
-##-keep class com.baidu.navisdk.**{*;}
-#
-##  Jpush不需要混淆
-#-dontwarn cn.jpush**
-#-keep class cn.jpush.** { *; }#Jpush
-#
-## XUtils工具不需要混淆
-#-dontwarn com.lidroid**
-#-keep class com.lidroid.**{*;}#ViewInject
-#
-## 自定义控件不需要混淆
-#-keep class com.cheweishi.android.widget.** {*;}#CustomView
-#
-#-dontwarn com.sinovoice**
-#-keep class com.sinovoice.** { *; }
-#
-## 百度地图相关不需要混淆
-#-dontwarn com.baidu**
-#-keep class com.baidu.** { *; }
-#-keep class vi.com.gdi.bgl.android.**{*;}
-#
-##-dontwarn demo.Pinyin4jAppletDemo**
-##-keep class demo.Pinyin4jAppletDemo{*;}
-#
-## volley工具不需要混淆
-#-dontwarn com.android.volley.toolbox**
-#-keep class com.android.volley.toolbox{*;}
-#
-## gson工具不需要混淆
-#-dontwarn com.google.gson**
-#-keep class com.google.gson.**{*;}
-#
-##-dontwarn com.nineoldandroids.**
-##-keep class com.nineoldandroids.**{*;}
-#
-#-dontwarn org.apache.http**
-#-keep class org.apache.http.**{*;}
-#
-#-dontwarn com.handmark.pulltorefresh**
-#-keep class com.handmark.pulltorefresh.**{*;}
-#
-#-dontwarn com.squareup.picasso**
-#-keep class com.squareup.picasso.**{*;}
-#
-#-dontwarn com.cheweishi.android.entity**
-#-keep class com.cheweishi.android.entity.**{*;}
-#
-#-keep class com.cheweishi.android.response.BaseResponse
-#
-#-keep public class com.android.vending.licensing.ILicensingService
-#
-#-printmapping mapping.txt #混淆后文件映射
-#
-##-keep public class com.cheweishi.android.R$*{
-##    public static final int *;
-##}
-#
-#-keepclasseswithmembernames class * {
-#    native <methods>;
-#}
-#-keepclasseswithmembernames class * {
-#    public <init>(android.content.Context, android.util.AttributeSet);
-#}
-#-keepclasseswithmembernames class * {
-#    public <init>(android.content.Context, android.util.AttributeSet, int);
-#}
-#-keepclassmembers enum * {
-#    public static **[] values();
-#    public static ** valueOf(java.lang.String);
-#}
-#-keep class * implements android.os.Parcelable {
-#  public static final android.os.Parcelable$Creator *;
-#}
+# 保留特定的类和类成员的名称，不进行混淆
+-keep class com.java8888.java9999.ui.MainActivity {
+    public <methods>;
+    private <fields>;
+}
+
+# 保留特定的类和类成员的名称，不进行混淆，并且不移除未使用的代码
+-keep,allowshrinking class com.java8888.java9999.ui.SplashActivity {
+    public <methods>;
+    private <fields>;
+}
+
+# 保留特定的类和类成员的名称，不进行混淆，并且不移除未使用的代码
+-keep,allowshrinking class com.java8888.java9999.ui.CustomWebActivity {
+    public <methods>;
+    private <fields>;
+}
+
+# 移除所有日志调用
+-assumenosideeffects class android.util.Log {
+    public static boolean isLoggable(java.lang.String, int);
+    public static int v(...);
+    public static int i(...);
+    public static int d(...);
+    public static int w(...);
+    public static int e(...);
+}
+
+# 移除所有调试信息
+-assumenosideeffects class * {
+    public static void setDebugEnabled(...);
+}
+
+# 自定义组件不混淆
+
+-keep public class * extends android.view.View {
+
+public <init>(android.content.Context);
+
+public <init>(android.content.Context, android.util.AttributeSet);
+
+public <init>(android.content.Context, android.util.AttributeSet, int);
+
+public void set*(...);
+
+}
+
+# 自定义控件类和类的成员不混淆(所有指定的类和类成员是要存在)
+
+-keepclasseswithmembers class * {
+
+public <init>(android.content.Context, android.util.AttributeSet);
+
+}
+
+# 同上
+
+-keepclasseswithmembers class * {
+
+public <init>(android.content.Context, android.util.AttributeSet, int);
+
+}
+
+-keepclasseswithmembers class * {
+    public <init>(android.content.Context);
+}
+
+# 移除掉未使用的类和类成员
+-dontnote
+-dontwarn
+-dontoptimize
+-dontpreverify
+-verbose
+-ignorewarnings
+
+# 以下是一些常见的库和框架的特定规则示例，你可以根据你的项目需要添加或修改这些规则
+
+# 保留常见的 Android 库
+-keep class android.support.** { *; }
+-keep interface android.support.** { *; }
+-keep class androidx.** { *; }
+-keep interface androidx.** { *; }
+
+# 保留常见的 Google Play 服务库
+-keep class com.google.android.gms.** { *; }
+-keep interface com.google.android.gms.** { *; }
+
+# 保留常见的 Gson 库
+-keep class com.google.gson.** { *; }
+-keepclassmembers class com.google.gson.** { *; }
+
+# 保留常见的 Retrofit 库
+-keep class retrofit.** { *; }
+-keepclasseswithmembers class retrofit.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+
+# 保留常见的 OkHttp 库
+-dontwarn okhttp3.**
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+-keepattributes Signature
+-keepattributes Exceptions
+
+# 保留常见的 webview 库
+-keep class android.webkit.WebView {
+    public *;
+}
+
+
+# 更多的特定规则可以添加在这里
+
