@@ -134,6 +134,16 @@ public <init>(android.content.Context, android.util.AttributeSet, int);
     public *;
 }
 
+-dontwarn dalvik.**
+-dontwarn com.tencent.smtt.**
+
+-keep class com.tencent.smtt.** {
+    *;
+}
+
+-keep class com.tencent.tbs.** {
+    *;
+}
 
 # 更多的特定规则可以添加在这里
 

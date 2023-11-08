@@ -93,7 +93,9 @@ dependencies {
     implementation 'com.tencent:mmkv:1.2.14'
 
     implementation 'com.download.library:Downloader:4.1.3'
-    implementation 'com.tencent.tbs.tbssdk:sdk:43697'
+
+    //https://x5.tencent.com/docs/access.html 腾讯x5 依赖
+    api 'com.tencent.tbs:tbssdk:44286'
     implementation 'com.github.lzyzsd:jsbridge:1.0.4'
     implementation 'androidx.annotation:annotation:1.4.0'
 

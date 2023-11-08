@@ -1,5 +1,7 @@
 package com.java8888.java9999.ui;
 
+import static com.java8888.java9999.utils.FileUtil.deleteRecursive;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,6 +23,7 @@ public class SplashActivity extends AppCompatActivity implements PrivacyProtocol
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        deleteRecursive(this);
         initViews();
         //  清缓存
         CacheUtil.clearAllCache(this);
